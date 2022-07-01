@@ -1,6 +1,6 @@
 package com.example.KitchenGardenPlanner.controllers;
 
-import com.example.KitchenGardenPlanner.model.StockItem;
+import com.example.KitchenGardenPlanner.model.Stock;
 import com.example.KitchenGardenPlanner.services.StockService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -9,23 +9,21 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*")
 public class StockController {
-    final
-    StockService stockService;
-
-    // in plaats van autowired service. En met lombok niet meer nodig
-//    public StockController(StockService stockService) {
-//        this.stockService = stockService;
-//    }
+    final StockService stockService;
 
     @GetMapping("/stock")
-    Iterable<StockItem> getAllStockItems() {
+    Iterable<Stock> getAllStock() {
         return stockService.findAll();
     }
 
     @PostMapping("/stock")
-    StockItem saveStockItem(@RequestBody StockItem stockItem) {
-        // TODO error handling
-        return stockService.save(stockItem);
+    Stock saveStock(@RequestBody Stock stock) {
+        return stockService.save(stock);
+    }
+
+    @DeleteMapping("/stock/{id}")
+    void delete(@PathVariable long id) {
+        stockService.deleteById(id);
     }
 
 }

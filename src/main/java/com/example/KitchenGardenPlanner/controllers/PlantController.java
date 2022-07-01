@@ -21,5 +21,4 @@ public class PlantController {
         return this.plantService.findAll();
     }
 
-
 }

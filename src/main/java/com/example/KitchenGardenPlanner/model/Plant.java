@@ -16,7 +16,7 @@ public class Plant {
     Long id;
 
     @ManyToOne
-    StockItem type;
+    Stock type;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     LocalDate date;
