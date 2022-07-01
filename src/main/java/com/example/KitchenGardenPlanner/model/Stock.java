@@ -1,12 +1,12 @@
 package com.example.KitchenGardenPlanner.model;
 
+import com.example.KitchenGardenPlanner.model.enums.LightPreference;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.Year;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,25 +15,22 @@ public class Stock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
+
     String name;
+    String latinName;
     String description;
+    String brand;
+    Year bestBefore;
+    boolean isPerennial;
+
+    LightPreference lightPreference;
+
+    @Column(columnDefinition = "boolean default true")
     boolean available;
 
-    // 1 Stock
+    @OneToMany(cascade = CascadeType.ALL)
+    List<Period> periods;
 
-    // perennial?
-
-    // periodes:
-    // Zaaiperiode onder glas
-    // Zaaiperiode volle grond
-    // Uitplanten periode
-    // Bloeiperiode
-    // Oogstperiode
-
-    // plantafstand x * y
-    // zaaidiepte
-    // houdbaarheid zakje
-    // standplaats: zon/halfschaduw/schaduw
-    // merknaam en hoeveelheid
-
+    int spaceBetweenRows;
+    int spaceBetweenPlants;
 }
