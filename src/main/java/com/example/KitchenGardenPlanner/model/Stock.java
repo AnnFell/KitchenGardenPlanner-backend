@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.Year;
 import java.util.List;
 
 @Getter
@@ -20,8 +19,6 @@ public class Stock {
     String latinName;
     String description;
     String brand;
-    Year bestBefore;
-    boolean isPerennial;
 
     LightPreference lightPreference;
 
