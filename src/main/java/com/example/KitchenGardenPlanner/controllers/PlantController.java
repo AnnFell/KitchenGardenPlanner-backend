@@ -4,6 +4,7 @@ import com.example.KitchenGardenPlanner.model.Plant;
 import com.example.KitchenGardenPlanner.services.PlantService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
@@ -24,5 +25,10 @@ public class PlantController {
     @DeleteMapping("/plant/{id}")
     void delete(@PathVariable long id) {
         plantService.deleteById(id);
+    }
+
+    @GetMapping("/plant/{id}")
+    Optional<Plant> getPlant(@PathVariable long id) {
+        return this.plantService.findById(id);
     }
 }
