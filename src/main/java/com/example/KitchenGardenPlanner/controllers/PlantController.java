@@ -21,4 +21,8 @@ public class PlantController {
         return this.plantService.findAll();
     }
 
+    @DeleteMapping("/plant/{id}")
+    void delete(@PathVariable long id) {
+        plantService.deleteById(id);
+    }
 }
