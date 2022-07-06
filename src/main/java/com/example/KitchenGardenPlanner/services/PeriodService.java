@@ -1,7 +1,11 @@
 package com.example.KitchenGardenPlanner.services;
 
-import com.example.KitchenGardenPlanner.model.Period;
-import org.springframework.data.repository.CrudRepository;
+import com.example.KitchenGardenPlanner.repository.PeriodRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
-public interface PeriodService extends CrudRepository<Period, Long> {
+@AllArgsConstructor
+@Service
+public class PeriodService {
+    final PeriodRepository periodRepository;
 }

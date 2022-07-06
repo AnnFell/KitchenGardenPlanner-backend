@@ -12,23 +12,23 @@ import java.util.Optional;
 public class PlantController {
     final PlantService plantService;
 
-    @PostMapping("/plant")
+    @PostMapping("/api/plant")
     Plant save(@RequestBody Plant plant) {
-        return plantService.save(plant);
+        return plantService.savePlant(plant);
     }
 
-    @GetMapping("/plant")
+    @GetMapping("/api/plant")
     Iterable<Plant> findAll() {
-        return this.plantService.findAll();
+        return this.plantService.findAllPlants();
     }
 
-    @DeleteMapping("/plant/{id}")
+    @DeleteMapping("/api/plant/{id}")
     void delete(@PathVariable long id) {
-        plantService.deleteById(id);
+        plantService.deletePlantById(id);
     }
 
-    @GetMapping("/plant/{id}")
+    @GetMapping("/api/plant/{id}")
     Optional<Plant> getPlant(@PathVariable long id) {
-        return this.plantService.findById(id);
+        return this.plantService.findPlantById(id);
     }
 }

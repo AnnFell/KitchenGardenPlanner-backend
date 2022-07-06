@@ -16,21 +16,19 @@ public class StockController {
     final StockService stockService;
     final PlantService plantService;
 
-    @GetMapping("/stock")
-    Iterable<Stock> getAllStock() {
-        return stockService.findAll();
+    @GetMapping("/api/stock")
+    Iterable<Stock> findAllStock() {
+        return stockService.findAllStock();
     }
 
-    @PostMapping("/stock")
+    @PostMapping("/api/stock")
     Stock saveStock(@RequestBody Stock stock) {
-        return stockService.save(stock);
+        return stockService.saveStock(stock);
     }
 
-    @DeleteMapping("/stock/{id}")
+    @DeleteMapping("/api/stock/{id}")
     void delete(@PathVariable long id) {
-        Iterable<Plant> plants = plantService.findByTypeId(id);
-        plantService.deleteAll(plants);
-        stockService.deleteById(id);
+        stockService.deleteStock(id);
     }
 
 }
