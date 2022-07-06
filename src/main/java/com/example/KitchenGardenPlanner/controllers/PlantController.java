@@ -3,7 +3,11 @@ package com.example.KitchenGardenPlanner.controllers;
 import com.example.KitchenGardenPlanner.model.Plant;
 import com.example.KitchenGardenPlanner.services.PlantService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import javax.validation.Valid;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -13,7 +17,7 @@ public class PlantController {
     final PlantService plantService;
 
     @PostMapping("/api/plant")
-    Plant save(@RequestBody Plant plant) {
+    Plant save(@Valid @RequestBody Plant plant) {
         return plantService.savePlant(plant);
     }
 
@@ -28,7 +32,10 @@ public class PlantController {
     }
 
     @GetMapping("/api/plant/{id}")
-    Optional<Plant> getPlant(@PathVariable long id) {
-        return this.plantService.findPlantById(id);
+    Plant getPlant(@PathVariable long id) {
+        Optional<Plant> plantOptional = plantService.findPlantById(id);
+        return plantOptional.orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "No plant found with id: " + id)
+        );
     }
 }

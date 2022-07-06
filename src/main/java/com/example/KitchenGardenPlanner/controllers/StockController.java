@@ -1,13 +1,12 @@
 package com.example.KitchenGardenPlanner.controllers;
 
-import com.example.KitchenGardenPlanner.model.Plant;
 import com.example.KitchenGardenPlanner.model.Stock;
 import com.example.KitchenGardenPlanner.services.PlantService;
 import com.example.KitchenGardenPlanner.services.StockService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.validation.Valid;
 
 @AllArgsConstructor
 @RestController
@@ -22,7 +21,7 @@ public class StockController {
     }
 
     @PostMapping("/api/stock")
-    Stock saveStock(@RequestBody Stock stock) {
+    Stock saveStock(@Valid @RequestBody Stock stock) {
         return stockService.saveStock(stock);
     }
 
@@ -30,5 +29,4 @@ public class StockController {
     void delete(@PathVariable long id) {
         stockService.deleteStock(id);
     }
-
 }

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Getter
@@ -15,13 +16,19 @@ public class Plant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @NotNull
     @ManyToOne
     Stock type;
 
+    @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd")
     LocalDate date;
 
-    String location; // TODO optional
-    boolean harvested; // TODO default false
+    @NotNull
+    @Column(columnDefinition = "varchar(255) default 'No location specified'")
+    String location;
 
+    @NotNull
+    @Column(columnDefinition = "boolean default false")
+    boolean harvested;
 }
