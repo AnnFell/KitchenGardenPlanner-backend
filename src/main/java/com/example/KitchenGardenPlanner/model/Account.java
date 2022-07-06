@@ -15,5 +15,8 @@ public class Account {
     long id;
 
     @NotNull
-    String name;
+    String userName;
+
+    @NotNull
+    String password;
 }
