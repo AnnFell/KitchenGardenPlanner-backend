@@ -38,4 +38,9 @@ public class PlantController {
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "No plant found with id: " + id)
         );
     }
+
+    @GetMapping("/api/plant/harvest/{monthNumber}")
+    Iterable<Plant> findHarvestablePlants(@PathVariable int monthNumber) {
+        return this.plantService.findHarvestablePlants(monthNumber);
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.KitchenGardenPlanner.services;
 
+import com.example.KitchenGardenPlanner.model.Period;
 import com.example.KitchenGardenPlanner.model.Stock;
 import com.example.KitchenGardenPlanner.repository.StockRepository;
 import lombok.AllArgsConstructor;
@@ -12,8 +13,12 @@ public class StockService {
     final PlantService plantService;
 
     public Iterable<Stock> findAllStock() {
-        return this.stockRepository.findAll();
+        return stockRepository.findAll();
     }
+
+//    public Stock findByPeriodsContaining(Period period) {
+//        return stockRepository.findByPeriodsContaining(period);
+//    }
 
     public Stock saveStock(Stock stock) {
         return stockRepository.save(stock);
