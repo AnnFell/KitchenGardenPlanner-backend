@@ -5,5 +5,4 @@ import com.example.KitchenGardenPlanner.model.enums.PlantEventTypes;
 import org.springframework.data.repository.CrudRepository;
 
 public interface PeriodRepository extends CrudRepository<Period, Long> {
-//    Iterable<Period> findByTypeAndStartMonthIsLessThanEqualAndAndEndMonthGreaterThanEqual(PlantEventTypes type, int startMonth, int endMonth);
 }

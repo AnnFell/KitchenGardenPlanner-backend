@@ -1,5 +1,6 @@
 package com.example.KitchenGardenPlanner.controllers;
 
+import com.example.KitchenGardenPlanner.model.Plant;
 import com.example.KitchenGardenPlanner.model.Stock;
 import com.example.KitchenGardenPlanner.services.PlantService;
 import com.example.KitchenGardenPlanner.services.StockService;
@@ -28,5 +29,10 @@ public class StockController {
     @DeleteMapping("/api/stock/{id}")
     void delete(@PathVariable long id) {
         stockService.deleteStock(id);
+    }
+
+    @GetMapping("/api/plant/harvest/{monthNumber}")
+    Iterable<Plant> findHarvestablePlants(@PathVariable int monthNumber) {
+        return this.stockService.findHarvestablePlants(monthNumber);
     }
 }
